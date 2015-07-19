@@ -17,4 +17,9 @@ router.get('/', function(req, res) { // '/' ruta vacia ejemplo: localhost:3000/a
 // se añade en la version 3 primera pregunta
 router.get('/quizes/question', quizController.question);
 router.get('/quizes/answer',   quizController.answer);
+
+//get para pagina de creditos p2p obligatorio modulo6
+router.get('/author', function(req, res) {
+  res.render('author', {});
+});
 module.exports = router;
