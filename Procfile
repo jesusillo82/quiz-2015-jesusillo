@@ -1,1 +1,1 @@
-web: nodejs ./bin/wwww
+web: nodejs ./bin/www
