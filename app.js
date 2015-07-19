@@ -8,6 +8,12 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+// se añade en versicon 4 marco de la aplicacion
+//se importa express partials instalado previamente con npm install --save express-partials@0.3.0
+var partials = require('express-partials');
+
+
 // se importan los enrutadores
 var routes = require('./routes/index');
 
@@ -19,6 +25,9 @@ var app = express();
 app.set('views', path.join(__dirname, 'views')); // con join se une la ruta del directorio actual,quiz q es __dirname con views, dando como resultado el path absoluto
 app.set('view engine', 'ejs'); // vista ejs, puesto que la instalamos anteriormente, $ nodejs node_modules/express-generator/bin/express --ejs quiz
 // Instalacion de los MW anteriormente importados en el mismo orden en que deben ejecutarse cuando llegue una transaccion http
+
+// se añade en version 4. 
+app.use(partials());
 
 
 // uncomment after placing your favicon in /public
