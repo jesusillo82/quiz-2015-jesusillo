@@ -23,6 +23,6 @@ router.get('/quizes/answer',   quizController.answer);
 //get para pagina de creditos p2p obligatorio modulo6
 router.get('/author', function(req, res) {
   //res.render('author', {});
-  res.render('layout', { view: 'author' }); //añado para NODE moderno
+  res.render('layout', { view: 'author', title: 'Créditos' }); //añado para NODE moderno
 });
 module.exports = router;
