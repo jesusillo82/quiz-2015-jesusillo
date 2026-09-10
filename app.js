@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 
 // se añade en versicon 4 marco de la aplicacion
 //se importa express partials instalado previamente con npm install --save express-partials@0.3.0
-var partials = require('express-partials');
+//var partials = require('express-partials'); esta linea esta obsoleta para NODE moderno
 
 
 // se importan los enrutadores
@@ -27,7 +27,7 @@ app.set('view engine', 'ejs'); // vista ejs, puesto que la instalamos anteriorme
 // Instalacion de los MW anteriormente importados en el mismo orden en que deben ejecutarse cuando llegue una transaccion http
 
 // se añade en version 4. 
-app.use(partials());
+//app.use(partials()); obsoleto para NODE moderno 
 
 
 // uncomment after placing your favicon in /public
