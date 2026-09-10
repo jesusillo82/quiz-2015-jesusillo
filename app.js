@@ -44,6 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //instalacion de los enrutadores(rutas)
 app.use('/', routes);  // si la rutal path es la vacia ej localhost:3000 accede al directorio routes y ejecuta index.js
 
+/* Sustituyo todo el bloque con los 3 errores para NODE moderno
 
 // MW ERROR 1: En caso de que las rutas no sean ni routes ni users gestionaremos los errores,
 //pasando al mw de error HTTP 404 (recurso no encontrado) y de este al siguiente error
@@ -79,6 +80,29 @@ app.use(function(err, req, res, next) {
         error: {} // no genera lista de errores
     });
 });
+
+*/
+
+// Incluyo los siguientes app use para handler NODE moderno
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+// unified error handler
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+
+    const isDev = app.get('env') === 'development';
+
+    res.render('error', {
+        message: err.message,
+        error: isDev ? err : {}
+    });
+});
+
 
 // se exporta app para comando de arranque
 module.exports = app;
