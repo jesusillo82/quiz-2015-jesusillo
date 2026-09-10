@@ -11,7 +11,9 @@ var quizController = require('../controllers/quiz_controller');// se añade en l
 //EJS: javascript embebido en html <%...codigo js , comandos etc......%>
 
 router.get('/', function(req, res) { // '/' ruta vacia ejemplo: localhost:3000/algo no valdria
-  res.render('index', { title: 'Quiz' }); 
+  //res.render('index', { title: 'Quiz' }); 
+  res.render('layout', { view: 'index', title: 'Quiz' }); //añadimos para NODE moderno
+
 });
 
 // se añade en la version 3 primera pregunta
@@ -20,6 +22,7 @@ router.get('/quizes/answer',   quizController.answer);
 
 //get para pagina de creditos p2p obligatorio modulo6
 router.get('/author', function(req, res) {
-  res.render('author', {});
+  //res.render('author', {});
+  res.render('layout', { view: 'author' }); //añado para NODE moderno
 });
 module.exports = router;
