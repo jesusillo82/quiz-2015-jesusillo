@@ -1,5 +1,24 @@
+<!--
 <form method="get" action="/quizes/answer">        
   Pregunta: <%= pregunta %> <p>
   <input type="text" name="respuesta" value="Respuesta"/>
   <input type="submit" value="Enviar">
+</form>
+-->
+
+
+<!-- añado para meter id y poder gestionar mas preguntas-->
+<form method="get" action="/quizes/answer">
+
+    <p>Pregunta: <%= pregunta %></p>
+
+    <input type="hidden" name="id" value="<%= id %>">
+
+    <input
+        type="text"
+        name="respuesta"
+        placeholder="Escribe tu respuesta">
+
+    <input type="submit" value="Enviar">
+
 </form>
