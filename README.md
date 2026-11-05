@@ -32,3 +32,10 @@ answer()
     Sí     No
     |       |
 Correcto  Incorrecto
+
+
+----------- Tres conceptos fundamentales de Express:
+
+Renderizar vistas EJS (res.render()).
+Enviar datos del controlador a la vista (pregunta).
+Recibir parámetros GET mediante req.query (respuesta).
