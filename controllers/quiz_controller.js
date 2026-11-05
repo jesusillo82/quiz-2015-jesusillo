@@ -5,7 +5,10 @@ exports.question = function(req, res) {
 
 // GET /quizes/answer
 exports.answer = function(req, res) {
-   if (req.query.respuesta === 'Roma' | 'roma'){
+
+   const respuestaUsuario = req.query.respuesta ? req.query.respuesta.trim() : "";
+
+   if (respuestaUsuario.toLowerCase()=== 'roma'){
       res.render('quizes/answer', {respuesta: 'Correcto'});
    } else {
       res.render('quizes/answer', {respuesta: 'Incorrecto'});
