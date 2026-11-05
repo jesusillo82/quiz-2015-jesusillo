@@ -21,44 +21,58 @@ exports.answer = function(req, res) {
 
 
 //mejora del controlador para mas preguntas mayo 2026
-// Base de preguntas
+// Banco de preguntas aleatorias
 const preguntas = [
-    { id: 0, pregunta: "Capital de Italia", respuesta: "roma" },
-    { id: 1, pregunta: "Capital de Francia", respuesta: "paris" },
-    { id: 2, pregunta: "Capital de España", respuesta: "madrid" },
-    { id: 3, pregunta: "Capital de Alemania", respuesta: "berlin" }
+    {
+        pregunta: "Capital de Italia",
+        respuesta: "roma"
+    },
+    {
+        pregunta: "Capital de Francia",
+        respuesta: "paris"
+    },
+    {
+        pregunta: "Capital de España",
+        respuesta: "madrid"
+    },
+    {
+        pregunta: "Capital de Alemania",
+        respuesta: "berlin"
+    },
+    {
+        pregunta: "Capital de Portugal",
+        respuesta: "lisboa"
+    }
 ];
 
 // GET /quizes/question
 exports.question = function(req, res) {
 
-    const id = req.query.id ? parseInt(req.query.id) : 0;
+    const indice = Math.floor(Math.random() * preguntas.length);
 
-    res.render("quizes/question", {
-        pregunta: preguntas[id].pregunta,
-        id: preguntas[id].id
+    res.render('quizes/question', {
+        pregunta: preguntas[indice].pregunta,
+        solucion: preguntas[indice].respuesta
     });
 };
+
 
 // GET /quizes/answer
 exports.answer = function(req, res) {
 
-    const id = parseInt(req.query.id);
+    const respuestaUsuario = req.query.respuesta
+        ? req.query.respuesta.trim().toLowerCase()
+        : "";
 
-    const respuestaUsuario =
-        req.query.respuesta
-            ? req.query.respuesta.trim().toLowerCase()
-            : "";
+    const solucion = req.query.solucion;
 
-    const correcta = preguntas[id].respuesta;
-
-    if (respuestaUsuario === correcta) {
-        res.render("quizes/answer", {
-            respuesta: "Correcto"
+    if (respuestaUsuario === solucion) {
+        res.render('quizes/answer', {
+            respuesta: 'Correcto'
         });
     } else {
-        res.render("quizes/answer", {
-            respuesta: `Incorrecto. La respuesta correcta es ${correcta}`
+        res.render('quizes/answer', {
+            respuesta: `Incorrecto. La respuesta correcta es ${solucion}`
         });
     }
 };

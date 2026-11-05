@@ -7,17 +7,22 @@
 -->
 
 
-<!-- añado para meter id y poder gestionar mas preguntas-->
+<!-- añado camppo oculto con solucion y poder gestionar mas preguntas-->
 <form method="get" action="/quizes/answer">
 
-    <p>Pregunta: <%= pregunta %></p>
+    Pregunta: <%= pregunta %>
 
-    <input type="hidden" name="id" value="<%= id %>">
+    <p>
+        <input
+            type="text"
+            name="respuesta"
+            placeholder="Escribe tu respuesta">
+    </p>
 
     <input
-        type="text"
-        name="respuesta"
-        placeholder="Escribe tu respuesta">
+        type="hidden"
+        name="solucion"
+        value="<%= solucion %>">
 
     <input type="submit" value="Enviar">
 
